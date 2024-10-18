@@ -15,8 +15,13 @@ export class CreateAddDto {
        
         @IsOptional()
         @IsArray()
-        ubication:number[];
-    
+       latitud :number[];
+
+
+        @IsOptional()
+        @IsArray()
+        longitud :number[];
+
         @IsOptional()
         range:number;
 }
