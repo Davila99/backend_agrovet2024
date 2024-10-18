@@ -6,6 +6,7 @@ import { VeterinariansModule } from './veterinarians/veterinarians.module';
 import { OwnersModule } from './owners/owners.module';
 import { AddsModule } from './adds/adds.module';
 import { ChatModule } from './chat/chat.module';
+import { AgronomesModule } from './agronomes/agronomes.module';
 
 
 @Module({
@@ -33,7 +34,9 @@ import { ChatModule } from './chat/chat.module';
   
     AddsModule,
   
-    ChatModule
+    ChatModule,
+  
+    AgronomesModule
   
   ],
 
