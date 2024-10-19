@@ -1,41 +1,32 @@
 import { Veterinarian } from "src/veterinarians/entities/veterinarian.entity";
-import {Column, Entity, OneToOne, PrimaryGeneratedColumn} from "typeorm";
-import {v4 as uuid} from 'uuid'
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({name: 'users', database: 'VetConsulta'})
+@Entity('users')
 export class User {
-
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
+    @Column('text')
+    fullName: string;
 
-    @OneToOne(
-        () =>Veterinarian,
-        (veterinarian)=>veterinarian.fullName
-    )
-    fullName?: string;
+    @Column('text', { select: false })
+    password: string;
 
-    @Column('text', {select: false})
-    password?: string;
+    @Column('text')
+    phoneNumber: string;
 
-    @OneToOne(
-        () =>Veterinarian,
-        (veterinarian)=>veterinarian.phoneNumber
-    )
-    phoneNumber?:string;
+    @Column('bool', { default: true })
+    isActive: boolean;
 
-
-    @Column('bool', {default: true})
-    isActive:boolean;
-
-
-    @Column('text',{
-        array:true,
-        default:['Propietario de animales', 'Veterinario']
-
+    @Column('text', {
+        array: true,
+        default: ['Propietario de animales', 'Veterinario']
     })
-    roles: string[]
+    roles: string[];
 
-    @Column('bool',{default:false})
-    isOnline:boolean;
+    @Column('bool', { default: false })
+    isOnline: boolean;
+
+    @OneToOne(() => Veterinarian, (veterinarian) => veterinarian.user)
+    veterinarian: Veterinarian; // Relación inversa con Veterinario
 }

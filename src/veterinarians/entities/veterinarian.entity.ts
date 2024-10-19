@@ -3,41 +3,33 @@ import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('Veterinarians')
 export class Veterinarian {
-
     @PrimaryGeneratedColumn('uuid')
     veterinaryId: string;
 
     @Column('text')
-    veterinaryPerfil:string;
+    veterinaryPerfil: string;
+
+    @OneToOne(() => User, (user) => user.veterinarian)
+    user: User; // Relación con User
 
     @Column('text')
-    fullName:User
-
-    @Column('text')
-    phoneNumber:User
-
-    @Column({type:'text',
-            nullable:true})
     description: string;
 
-    @Column('text',{
-        array:true,
-        default:[]
+    @Column('text', {
+        array: true,
+        default: []
     })
-    especiality:string[]
+    especiality: string[];
 
-    @Column('int',{default:0})
-    experience:number;
+    @Column('int', { default: 0 })
+    experience: number;
 
-    @Column('int',{default:0})
-    consults:number;
+    @Column('int', { default: 0 })
+    consults: number;
 
-    @Column('numeric', {default:0})
-    stars:number;
-    
-    @OneToOne(
-        () =>User,
-        (user)=>user.isOnline
-    )
-    isOnline:User;
+    @Column('numeric', { default: 0 })
+    stars: number;
+
+    // Este campo se eliminó ya que no tiene sentido tener un User completo como campo de isOnline.
+    // Si deseas mantener el estado en línea, puedes hacerlo en la entidad User.
 }
