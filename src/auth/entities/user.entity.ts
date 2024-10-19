@@ -13,16 +13,16 @@ export class User {
         () =>Veterinarian,
         (veterinarian)=>veterinarian.fullName
     )
-    fullName: string;
+    fullName?: string;
 
     @Column('text', {select: false})
-    password: string;
+    password?: string;
 
     @OneToOne(
         () =>Veterinarian,
         (veterinarian)=>veterinarian.phoneNumber
     )
-    phoneNumber:string;
+    phoneNumber?:string;
 
 
     @Column('bool', {default: true})

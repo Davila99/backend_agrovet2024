@@ -42,7 +42,6 @@ export class AuthService {
   }
   }
 
-
   async login(loginUserDto:LoginUserDto){
     const {password, phoneNumber} = loginUserDto;
     const user = await this.userRepository.findOne({

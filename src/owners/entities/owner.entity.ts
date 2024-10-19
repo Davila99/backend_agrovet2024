@@ -10,16 +10,10 @@ export class Owner {
     @Column('text')
     OwnerPerfil:string;
 
-    @OneToOne(
-        () =>User,
-        (user)=>user.fullName
-    )
+    @Column('text')
     fullName:User
 
-    @OneToOne(
-        () =>User,
-        (user)=>user.phoneNumber
-    )
+    @Column('text')
     phoneNumber:User
 
     @Column({type:'text',

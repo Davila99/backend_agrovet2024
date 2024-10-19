@@ -1,18 +1,26 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { AgronomesService } from './agronomes.service';
+import { Injectable } from '@nestjs/common';
+import { CreateAgronomeDto } from './dto/create-agronome.dto';
+import { UpdateAgronomeDto } from './dto/update-agronome.dto';
 
-describe('AgronomesService', () => {
-  let service: AgronomesService;
+@Injectable()
+export class AgronomesService {
+  create(createVeterinarianDto: CreateAgronomeDto) {
+    return 'This action adds a new veterinarian';
+  }
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [AgronomesService],
-    }).compile();
+  findAll() {
+    return `This action returns all veterinarians`;
+  }
 
-    service = module.get<AgronomesService>(AgronomesService);
-  });
+  findOne(id: number) {
+    return `This action returns a #${id} veterinarian`;
+  }
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
+  update(id: number, updateVeterinarianDto: UpdateAgronomeDto) {
+    return `This action updates a #${id} veterinarian`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} veterinarian`;
+  }
+}

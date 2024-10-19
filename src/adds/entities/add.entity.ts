@@ -33,13 +33,7 @@ export class Add {
         array:true,
         default:[]
     })
-    latitud:number[];
-
-    @Column('numeric',{
-        array:true,
-        default:[]
-    })
-    longitud:number[];
+    ubication:number[];
 
     @Column('int',{default:100})
     range:number;

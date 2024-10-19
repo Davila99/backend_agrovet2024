@@ -1,34 +1,34 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { AgronomesService } from './agronomes.service';
+import {AgronomesService} from './agronomes.service';
 import { CreateAgronomeDto } from './dto/create-agronome.dto';
-import { UpdateAgronomeDto } from './dto/update-agronome.dto';
+import {UpdateAgronomeDto } from './dto/update-agronome.dto';
 
 @Controller('agronomes')
 export class AgronomesController {
-  constructor(private readonly agronomesService: AgronomesService) {}
+  constructor(private readonly veterinariansService:AgronomesService) {}
 
   @Post()
-  create(@Body() createAgronomeDto: CreateAgronomeDto) {
-    return this.agronomesService.create(createAgronomeDto);
+  create(@Body() createVeterinarianDto:  CreateAgronomeDto) {
+    return this.veterinariansService.create(createVeterinarianDto);
   }
 
   @Get()
   findAll() {
-    return this.agronomesService.findAll();
+    return this.veterinariansService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.agronomesService.findOne(+id);
+    return this.veterinariansService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAgronomeDto: UpdateAgronomeDto) {
-    return this.agronomesService.update(+id, updateAgronomeDto);
+  update(@Param('id') id: string, @Body() updateVeterinarianDto: UpdateAgronomeDto) {
+    return this.veterinariansService.update(+id, updateVeterinarianDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.agronomesService.remove(+id);
+    return this.veterinariansService.remove(+id);
   }
 }
